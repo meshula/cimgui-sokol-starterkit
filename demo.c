@@ -9,6 +9,12 @@
 #include "cimgui.h"
 #include "sokol_imgui.h"
 
+extern
+void CheckerBoardWindow();
+
+extern
+void LevrWindow();
+
 static struct {
     sg_pass_action pass_action;
 } state;
@@ -40,6 +46,10 @@ static void frame(void) {
     igBegin("Hello Dear ImGui!", 0, ImGuiWindowFlags_None);
     igColorEdit3("Background", &state.pass_action.colors[0].clear_value.r, ImGuiColorEditFlags_None);
     igEnd();
+
+    CheckerBoardWindow();
+    LevrWindow();
+
     /*=== UI CODE ENDS HERE ===*/
 
     sg_begin_pass(&(sg_pass){ .action = state.pass_action, .swapchain = sglue_swapchain() });
